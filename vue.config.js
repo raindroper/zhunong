@@ -114,7 +114,7 @@ module.exports = {
 
     open: process.platform === 'darwin',
 
-    disableHostCheck: false,
+    disableHostCheck: true,
 
     host: '0.0.0.0',
 
