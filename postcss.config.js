@@ -9,7 +9,7 @@ module.exports = {
       viewportWidth: 750,
       unitPrecision: 3,
       viewportUnit: 'vw',
-      selectorBlackList: ['.ignore', '.hairlines'],
+      selectorBlackList: ['.ignore', '.hairlines', 'van-toast'],
       minPixelValue: 1,
       mediaQuery: false
     },

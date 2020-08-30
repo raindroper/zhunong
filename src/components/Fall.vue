@@ -38,7 +38,7 @@ export default {
     const step = windowHeight / (this.fall.time / this.unitTime);
     const interval = setInterval(() => {
       if (this.fall && Object.keys(this.fall)) {
-        if (this.top + this.$refs.fallItem.clientHeight >= this.bucketPosition && this.top + this.$refs.fallItem.clientHeight <= this.bucketPosition + step * 2) {
+        if (this.top + this.$refs.fallItem.clientHeight >= this.bucketPosition && this.top + this.$refs.fallItem.clientHeight <= this.bucketPosition + step * 10) {
           const width = this.$refs.fallItem.clientWidth;
           this.$emit('detective', { id: this.fall.id, left: this.left, width, score: this.fall.score });
         }
@@ -61,10 +61,10 @@ export default {
 <style scoped lang="scss">
     .fall-item-container {
         top: 0;
-        width: 80px;
-        height: 80px;
+        width: 120px;
+        /*height: 120px;*/
         position: absolute;
-
+        z-index: 99999999;
         img {
             width: 100%;
             height: 100%;
