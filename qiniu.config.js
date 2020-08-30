@@ -2,7 +2,7 @@ const qiniuConfig = {
   accessKey: '_C_l506psbbWCBbKfQC1SUeXXT9QhpFR9T1a8jZ9',
   secretKey: 'KaQ_lYr9zTYVQzVqBZkfokcaMTpl8q4gml5fAPJB',
   originPath: 'dist',
-  originFile: 'index4.html',
+  originFile: 'index5.html',
   oldOriginPath: 'dist2',
   zone: 'qiniu.zone.Zone_z0',
   envConfig: {

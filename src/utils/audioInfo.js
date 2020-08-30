@@ -27,6 +27,7 @@ const audioInfo = {
     function setAutoPlay () {
       // 设置自动播放为true
       audioInfo.autoplay = true;
+      console.log('callback', callback);
       callback();
       document.removeEventListener('click', setAutoPlay);
       document.removeEventListener('touchend', setAutoPlay);

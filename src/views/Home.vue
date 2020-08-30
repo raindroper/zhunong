@@ -62,6 +62,7 @@
                 </transition>
             </div>
         </template>
+        <audio src="/music/music.mp3" loop style="display: none;" ref="music" autoplay></audio>
     </div>
 </template>
 
@@ -140,10 +141,12 @@ export default {
   methods: {
     musicControl () {
       if (this.musicPlay) {
-        this.context.suspend();
+        // this.context.suspend();
+        this.$refs.music.pause();
         this.musicPlay = false;
       } else {
-        this.context.resume();
+        // this.context.resume();
+        this.$refs.music.play();
         this.musicPlay = true;
       }
     },
@@ -189,10 +192,15 @@ export default {
       }, 3000);
     },
     async playAudio (context, url) {
+      console.log('playAudio');
       const audioMedia = await request(url);
       context.decodeAudioData(audioMedia, decode => play(context, decode));
     },
     start () {
+      console.dir(this.$refs.music.paused);
+      if (this.$refs.music.paused) {
+        this.$refs.music.play();
+      }
       this.startFlag = false;
       const fallTypeList = [
         { src: '/images/luobo.png', score: 5, time: 1500 },
@@ -254,16 +262,19 @@ export default {
     this.fallWrapperOffset = this.$refs.fallWrapper.offsetLeft;
     this.bucketPosition = this.$refs.bucket.offsetTop;
     this.fallRange = this.$refs.fallWrapper.clientWidth;
+
+    console.log('readyState', this.$refs.music.readyState);
+    // alert(this.$refs.music.readyState);
   },
   created () {
-    this.context = new (window.AudioContext || window.webkitAudioContext)();
-    const context = this.context;
+    // this.context = new (window.AudioContext || window.webkitAudioContext)();
+    // const context = this.context;
     // 如果能够自动播放
-    const url = '/music/music.mp3';
-    audioInfo.init(() => this.playAudio(context, url));
-    if (audioInfo.autoplay) {
-      this.playAudio(context, url);
-    }
+    // const url = '/music/music.mp3';
+    // audioInfo.init(() => this.playAudio(context, url));
+    // if (audioInfo.autoplay) {
+    //   this.playAudio(context, url);
+    // }
     NProgress.done();
     clearInterval(spinTimer);
   },
